@@ -98,6 +98,7 @@ echo ""
 echo "Installing Gnome..."
 echo ""
 sudo pacman -Syu --needed --noconfirm - < gnome
+sudo cp 40-libinput.conf /etc/X11/xorg.conf.d/
 sudo systemctl enable gdm
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 
