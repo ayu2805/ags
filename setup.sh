@@ -9,6 +9,13 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
+read -p "Enter your Full Name: " fn
+if [ -n "$fn" ]; then
+    un=$(whoami)
+    sudo chfn -f "$fn" "$un"
+else
+    echo ""
+fi
 sudo cp pacman.conf /etc/
 sudo pacman -Syu --needed --noconfirm pacman-contrib
 echo ""
@@ -92,6 +99,7 @@ echo "Installing Gnome..."
 echo ""
 sudo pacman -Syu --needed --noconfirm - < gnome
 sudo systemctl enable gdm
+sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 
 echo ""
 read -r -p "Do you want to configure git? [y/N] " response
