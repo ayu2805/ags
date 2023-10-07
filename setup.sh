@@ -78,16 +78,8 @@ echo -e "VISUAL=nvim\nEDITOR=nvim\nQT_QPA_PLATFORMTHEME=qt6ct" | sudo tee /etc/e
 grep -qF "set number" /usr/share/nvim/sysinit.vim || echo "set number" | sudo tee -a /usr/share/nvim/sysinit.vim > /dev/null
 
 echo ""
-read -r -p "Do you want to install WhiteSur gtk and icon theme? [y/N] " response
+read -r -p "Do you want to install WhiteSur icon theme? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    
-    git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git --depth=1
-    cd WhiteSur-gtk-theme/
-    #sudo ./install.sh -o normal -i arch
-    #./install.sh -o normal -l -i arch
-    cd ..
-    rm -rf WhiteSur-gtk-theme/
-
     git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git --depth=1
     cd WhiteSur-icon-theme/
     sudo ./install.sh -a
@@ -100,7 +92,6 @@ echo "Installing Gnome..."
 echo ""
 sudo pacman -Syu --needed --noconfirm - < gnome
 sudo systemctl enable gdm
-sudo cp 40-libinput.conf /usr/share/X11/xorg.conf.d/
 
 echo ""
 read -r -p "Do you want to configure git? [y/N] " response
@@ -128,6 +119,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
     sudo tlp start
 
+    echo ""
     git clone https://github.com/AdnanHodzic/auto-cpufreq.git
     cd auto-cpufreq && sudo ./auto-cpufreq-installer
     sudo auto-cpufreq --install
