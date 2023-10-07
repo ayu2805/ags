@@ -130,6 +130,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
     git clone https://github.com/AdnanHodzic/auto-cpufreq.git
     cd auto-cpufreq && sudo ./auto-cpufreq-installer
+    cd ..
+    sudo rm -rf auto-cpufreq/
     sudo auto-cpufreq --install
 fi
 
