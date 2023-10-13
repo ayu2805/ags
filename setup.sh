@@ -97,7 +97,8 @@ fi
 echo ""
 echo "Installing Gnome..."
 echo ""
-sudo pacman -Syu --needed --noconfirm - < gnome
+sudo pacman -Syu --needed --noconfirm gnome gnome-tweaks
+sudo pacman -Rscn --needed --noconfirm - < rmvpkg
 sudo systemctl enable gdm
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 
