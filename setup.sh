@@ -163,7 +163,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     hp-plugin -i
 fi
 
-cp QtProject.conf ~/.config
+cp QtProject.conf ~/.config/
 
 echo ""
 echo "You can now reboot your system"
