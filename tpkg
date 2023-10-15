@@ -1,7 +1,6 @@
 accountsservice
 android-tools
 bleachbit
-btop
 btrfs-progs
 cups-pdf
 dosfstools
@@ -57,8 +56,6 @@ python-pyqt5
 python-pyqt6
 python-pysmbc
 python-pyxdg
-qt5ct
-qt6ct
 reiserfsprogs
 sshfs
 telegram-desktop
