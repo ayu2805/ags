@@ -40,7 +40,7 @@ echo ""
 if [ "$(pactree -r yay)" ]; then
     echo "Yay is already installed"
 else
-    git clone https://aur.archlinux.org/yay.git
+    git clone https://aur.archlinux.org/yay.git --depth=1
     cd yay
     yes | makepkg -si
     cd ..
@@ -99,7 +99,7 @@ echo ""
 echo "Installing Gnome..."
 echo ""
 sudo pacman -S --needed --noconfirm gnome gnome-tweaks
-sudo pacman -Rscn --noconfirm - < rmvpkg
+sudo pacman -Rscn --noconfirm - < rpkg
 sudo systemctl enable gdm
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 
@@ -130,7 +130,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo tlp start
 
     echo ""
-    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+    git clone https://github.com/AdnanHodzic/auto-cpufreq.git --depth=1
     cd auto-cpufreq && sudo ./auto-cpufreq-installer
     cd ..
     sudo rm -rf auto-cpufreq/
