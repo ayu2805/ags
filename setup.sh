@@ -86,14 +86,13 @@ echo -e "VISUAL=nvim\nEDITOR=nvim\nQT_QPA_PLATFORMTHEME=qt6ct\n__GL_THREADED_OPT
 grep -qF "set number" /usr/share/nvim/sysinit.vim || echo "set number" | sudo tee -a /usr/share/nvim/sysinit.vim > /dev/null
 
 echo ""
-read -r -p "Do you want to install WhiteSur icon theme? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git --depth=1
-    cd WhiteSur-icon-theme/
-    sudo ./install.sh -a
-    cd ..
-    rm -rf WhiteSur-icon-theme/
-fi
+echo "Installing WhiteSur Icon Theme..."
+echo ""
+git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git --depth=1
+cd WhiteSur-icon-theme/
+sudo ./install.sh -a
+cd ..
+rm -rf WhiteSur-icon-theme/
 
 echo ""
 echo "Installing Gnome..."
@@ -102,6 +101,14 @@ sudo pacman -S --needed --noconfirm gnome gnome-tweaks
 sudo pacman -Rscn --noconfirm - < rpkg
 sudo systemctl enable gdm
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
+gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+echo ""
+read -r -p "Do you want to remove Gnome Software? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    sudo pacman -Rscn --noconfirm gnome-software
+fi
 
 echo ""
 read -r -p "Do you want to configure git? [y/N] " response
