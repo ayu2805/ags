@@ -16,6 +16,7 @@ if [ -n "$fn" ]; then
 else
     echo ""
 fi
+
 sudo cp pacman.conf /etc/
 sudo pacman -Syu --needed --noconfirm pacman-contrib
 echo ""
