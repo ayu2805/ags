@@ -164,6 +164,12 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
+read -r -p "Do you want to install Eclipse Java IDE? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -Syu --needed --noconfirm eclipse-java
+fi
+
+echo ""
 read -r -p "Do you want to install HPLIP (Driver for HP printers)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed --noconfirm hplip sane python-pillow rpcbind python-reportlab
