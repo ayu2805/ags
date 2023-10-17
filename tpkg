@@ -14,7 +14,6 @@ foomatic-db-engine
 foomatic-db-nonfree
 fuse2
 fuse3
-geoclue
 git
 github-cli
 glab
@@ -54,8 +53,6 @@ python-pipx
 python-pynvim
 python-pyqt5
 python-pyqt6
-python-pysmbc
-python-pyxdg
 reiserfsprogs
 sshfs
 telegram-desktop
