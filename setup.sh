@@ -97,7 +97,7 @@ rm -rf WhiteSur-icon-theme/
 echo ""
 echo "Installing Gnome..."
 echo ""
-sudo pacman -S --needed --noconfirm gnome gnome-tweaks power-profiles-daemon
+sudo pacman -S --needed --noconfirm gnome gnome-tweaks
 sudo pacman -Rscn --noconfirm - < rpkg
 sudo systemctl enable gdm
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
