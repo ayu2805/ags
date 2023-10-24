@@ -2,6 +2,8 @@ accountsservice
 android-tools
 bleachbit
 cups-pdf
+dosfstools
+exfatprogs
 file-roller
 firefox
 fish
@@ -14,6 +16,7 @@ git
 github-cli
 glab
 gnome-keyring
+gparted
 gthumb
 gtk-engine-murrine
 gutenprint
