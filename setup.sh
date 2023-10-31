@@ -37,7 +37,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-if [ "$(pactree -r yay)" ]; then
+if [ "$(pactree -r yay-bin)" ]; then
     echo "Yay is already installed"
 else
     git clone https://aur.archlinux.org/yay-bin.git --depth=1
