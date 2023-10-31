@@ -40,11 +40,11 @@ echo ""
 if [ "$(pactree -r yay)" ]; then
     echo "Yay is already installed"
 else
-    git clone https://aur.archlinux.org/yay.git --depth=1
-    cd yay
+    git clone https://aur.archlinux.org/yay-bin.git --depth=1
+    cd yay-bin
     yes | makepkg -si
     cd ..
-    rm -rf yay
+    rm -rf yay-bin
 fi
 
 echo ""
