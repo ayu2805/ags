@@ -13,7 +13,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-read -r -p "Do you want to install Nvidia Tools? [y/N] " response
+read -r -p "Do you want to install Nvidia? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm nvidia-utils nvidia-settings nvidia-prime opencl-nvidia #NVIDIA
+    sudo pacman -Syu --needed --noconfirm nvidia nvidia-utils nvidia-settings nvidia-prime opencl-nvidia #NVIDIA
 fi
