@@ -83,7 +83,7 @@ fi
 sudo sed -i 's/Logo=1/Logo=0/' /etc/libreoffice/sofficerc
 
 echo -e "VISUAL=nvim\nEDITOR=nvim\nQT_QPA_PLATFORMTHEME=qt6ct\n__GL_THREADED_OPTIMIZATIONS=0" | sudo tee /etc/environment > /dev/null
-grep -qF "set number" /usr/share/nvim/sysinit.vim || echo "set number" | sudo tee -a /usr/share/nvim/sysinit.vim > /dev/null
+echo "set number" | sudo tee /usr/share/nvim/sysinit.vim > /dev/null
 
 echo ""
 echo "Installing WhiteSur Icon Theme..."
@@ -99,7 +99,6 @@ echo "Installing Gnome..."
 echo ""
 sudo pacman -S --needed --noconfirm - < gnome
 sudo pacman -Rscn --noconfirm - < rpkg
-sudo systemctl enable power-profiles-daemon
 sudo systemctl enable gdm
 sudo systemctl enable switcheroo-control
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
@@ -134,6 +133,14 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     cd ..
     sudo rm -rf auto-cpufreq/
     sudo auto-cpufreq --install
+fi
+
+echo ""
+read -r -p "Do you want Gnome Power Profiles Daemon(with manager)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    echo ""
+    sudo pacman -Syu power-profiles-daemon
+    sudo systemctl enable power-profiles-daemon
 fi
 
 echo ""
