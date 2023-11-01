@@ -101,6 +101,7 @@ sudo pacman -S --needed --noconfirm - < gnome
 sudo pacman -Rscn --noconfirm - < rpkg
 sudo systemctl enable gdm
 sudo systemctl enable switcheroo-control
+sudo systemctl enable power-profiles-daemon
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
@@ -124,23 +125,15 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     fi
 fi
 
-echo ""
-read -r -p "Do you want Gnome Power Profiles Daemon(with manager)? [y/N] " response
+read -r -p "Do you want to install TLP (and remove Gnome Power Profiles Daemon)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
-    sudo pacman -Syu power-profiles-daemon
-    sudo systemctl enable power-profiles-daemon
-fi
-
-echo ""
-read -r -p "Do you want auto-cpufreq? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    echo ""
-    git clone https://github.com/AdnanHodzic/auto-cpufreq.git --depth=1
-    cd auto-cpufreq && sudo ./auto-cpufreq-installer
-    cd ..
-    sudo rm -rf auto-cpufreq/
-    sudo auto-cpufreq --install
+    sudo pacman -Rscn --noconfirm power-profiles-daemon
+    sudo pacman -Syu --needed --noconfirm tlp tlp-rdw
+    sudo systemctl enable tlp.service
+    sudo systemctl enable NetworkManager-dispatcher.service
+    sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+    sudo tlp start
 fi
 
 echo ""
