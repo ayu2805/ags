@@ -97,7 +97,7 @@ rm -rf WhiteSur-icon-theme/
 echo ""
 echo "Installing Gnome..."
 echo ""
-sudo pacman -S --needed --noconfirm gnome gnome-tweaks gnome-browser-connector switcheroo-control
+sudo pacman -S --needed --noconfirm gnome gnome-tweaks gnome-browser-connector switcheroo-control gnome-firmware
 sudo pacman -Rscn --noconfirm - < rpkg
 sudo systemctl enable gdm
 sudo systemctl enable switcheroo-control
