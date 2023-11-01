@@ -111,6 +111,17 @@ gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 echo ""
+read -r -p "Do you want to install Libadwaita for GTK3 (adw-gtk3)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    tag=$(git ls-remote --tags https://github.com/lassekongo83/adw-gtk3.git | awk -F"/" '{print $3}' | tail -n 1)
+    release=${tag//./-}
+    wget https://github.com/lassekongo83/adw-gtk3/releases/download/$tag/adw-gtk3$release.tar.xz
+    sudo tar -xJf adw-gtk3$release.tar.xz -C /usr/share/themes/
+    rm adw-gtk3$release.tar.xz
+    gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+fi
+
+echo ""
 read -r -p "Do you want to configure git? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     read -p "Enter your Git name: " git_name
