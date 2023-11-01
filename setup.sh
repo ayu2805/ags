@@ -18,6 +18,8 @@ else
 fi
 
 sudo cp pacman.conf /etc/
+sudo mkdir /etc/pacman.d/hooks/
+sudo cp gutenprint.hook /etc/pacman.d/hooks/
 sudo pacman -Syu --needed --noconfirm pacman-contrib
 echo ""
 read -r -p "Do you want to install Reflector? [y/N] " response
