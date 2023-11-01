@@ -125,6 +125,14 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
+read -r -p "Do you want Gnome Power Profiles Daemon(with manager)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    echo ""
+    sudo pacman -Syu power-profiles-daemon
+    sudo systemctl enable power-profiles-daemon
+fi
+
+echo ""
 read -r -p "Do you want auto-cpufreq? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
@@ -133,14 +141,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     cd ..
     sudo rm -rf auto-cpufreq/
     sudo auto-cpufreq --install
-fi
-
-echo ""
-read -r -p "Do you want Gnome Power Profiles Daemon(with manager)? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    echo ""
-    sudo pacman -Syu power-profiles-daemon
-    sudo systemctl enable power-profiles-daemon
 fi
 
 echo ""
