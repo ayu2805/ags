@@ -106,12 +106,6 @@ gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 echo ""
-read -r -p "Do you want to remove Gnome Software? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Rscn --noconfirm gnome-software
-fi
-
-echo ""
 read -r -p "Do you want to configure git? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     read -p "Enter your Git name: " git_name
