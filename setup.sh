@@ -106,6 +106,7 @@ sudo systemctl enable switcheroo-control
 sudo systemctl enable power-profiles-daemon
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
