@@ -140,6 +140,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     fi
 fi
 
+echo ""
 read -r -p "Do you want to install TLP (and remove Gnome Power Profiles Daemon)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
