@@ -154,7 +154,7 @@ fi
 echo ""
 read -r -p "Do you want Bluetooth Service? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm bluez bluez-utils
+    sudo pacman -Syu --needed --noconfirm bluez bluez-utils blueman
     sudo systemctl enable bluetooth
 fi
 
