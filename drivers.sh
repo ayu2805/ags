@@ -16,5 +16,18 @@ echo ""
 read -r -p "Do you want to install Nvidia drivers? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed --noconfirm nvidia nvidia-utils nvidia-settings nvidia-prime opencl-nvidia #NVIDIA
-    sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service
+    sudo systemctl enable nvidia-{suspend,resume,hibernate}
+
+    echo ""
+    read -r -p "Do you want to install Envy Control? [y/N] " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+        echo ""
+        if [ "$(pactree -r yay-bin)" ]; then
+            yay -S envycontrol
+        else
+            echo "Yay is not installed..."
+            echo "Run setup.sh to install yay"
+
+    fi
+
 fi
