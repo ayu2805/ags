@@ -2,6 +2,7 @@ accountsservice
 android-tools
 bleachbit
 cups-pdf
+dbus-python
 dosfstools
 exfatprogs
 file-roller
