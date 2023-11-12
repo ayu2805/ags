@@ -23,7 +23,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         echo ""
         if [ "$(pactree -r yay-bin)" ]; then
-            yay -S envycontrol
+            yay -S --needed --noconfirm envycontrol
+            sudo envycontrol -s integrated
         else
             echo "Yay is not installed..."
             echo "Run setup.sh to install yay"
