@@ -99,8 +99,8 @@ rm -rf WhiteSur-icon-theme/
 echo ""
 echo "Installing Gnome..."
 echo ""
-sudo pacman -S --needed --noconfirm - < gnome
-sudo pacman -Rscn --noconfirm - < rpkg
+sudo pacman -S --needed --noconfirm - <gnome
+sudo pacman -Rscn --noconfirm - <rpkg
 sudo systemctl enable gdm
 sudo systemctl enable switcheroo-control
 sudo systemctl enable power-profiles-daemon
