@@ -18,6 +18,7 @@ else
 fi
 
 sudo cp pacman.conf /etc/
+sudo rm -rf /etc/pacman.d/hooks/
 sudo mkdir /etc/pacman.d/hooks/
 sudo cp gutenprint.hook /etc/pacman.d/hooks/
 sudo pacman -Syu --needed --noconfirm pacman-contrib
@@ -102,7 +103,6 @@ echo ""
 sudo pacman -S --needed --noconfirm - <gnome
 sudo pacman -Rscn --noconfirm - <rpkg
 sudo systemctl enable gdm
-sudo systemctl enable switcheroo-control
 sudo systemctl enable power-profiles-daemon
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
