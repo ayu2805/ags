@@ -28,6 +28,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         else
             echo "Yay is not installed..."
             echo "Run setup.sh to install yay"
+        fi
 
     fi
 
