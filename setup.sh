@@ -76,7 +76,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo -e "[Share]\ncomment = Samba Share\npath = /home/"$(whoami)"/Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
     mkdir ~/Share
     echo ""
-    sudo smbpasswd -a $(whoami)
+    sudo smbpasswd -a $un
     sudo cp samba /etc/ufw/applications.d/
     sudo ufw app update SMB
     sudo ufw allow SMB
