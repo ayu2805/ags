@@ -111,7 +111,7 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 
 echo ""
-read -r -p "Do you want to install Libadwaita theme for GTK3 and Firefox GNOME theme? [y/N] " response
+read -r -p "Do you want to install Libadwaita theme for GTK3? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     tag=$(git ls-remote --tags https://github.com/lassekongo83/adw-gtk3.git | awk -F"/" '{print $3}' | tail -n 1)
     release=${tag//./-}
@@ -119,8 +119,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo tar -xJf adw-gtk3$release.tar.xz -C /usr/share/themes/
     rm adw-gtk3$release.tar.xz
     gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
-    
-    curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
 fi
 
 echo ""
