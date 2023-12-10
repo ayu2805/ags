@@ -26,17 +26,10 @@ echo ""
 read -r -p "Do you want to install Reflector? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed --noconfirm reflector
-    echo -e "--save /etc/pacman.d/mirrorlist\n-p https\n-c 'Netherlands,United States'\n-l 10\n--sort rate" | sudo tee /etc/xdg/reflector/reflector.conf > /dev/null
-    #Change location as per your need
     echo ""
     echo "It will take time to fetch the server/mirrors so please wait"
-    echo ""
-    if [ "$(pactree -r reflector)" ]; then
-        sudo systemctl restart reflector
-    else
-        sudo systemctl enable --now reflector 
-        sudo systemctl enable reflector.timer
-    fi
+    sudo reflector --save /etc/pacman.d/mirrorlist -p https -c 'Netherlands,United States, ' -l 10 --sort rate
+    #Change location as per your need
 fi
 
 echo ""
