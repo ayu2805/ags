@@ -28,7 +28,9 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed --noconfirm reflector
     echo ""
     echo "It will take time to fetch the server/mirrors so please wait"
-    sudo reflector --save /etc/pacman.d/mirrorlist -p https -c 'Netherlands,United States, ' -l 10 --sort rate
+    if [ "$(pactree -r reflector)" ]; then
+        sudo reflector --save /etc/pacman.d/mirrorlist -p https -c 'Netherlands,United States, ' -l 10 --sort rate
+    fi
     #Change location as per your need
 fi
 
