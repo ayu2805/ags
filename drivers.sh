@@ -1,6 +1,7 @@
 #!/bin/sh
 
 sudo cp pacman.conf /etc/
+sudo pacman -Syu --needed --noconfirm pacman-contrib
 read -r -p "Do you want to install Intel drivers? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed --noconfirm mesa libva-intel-driver intel-media-driver vulkan-intel #Intel
