@@ -26,8 +26,13 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
             yay -S --needed --noconfirm envycontrol
             sudo envycontrol -s integrated
         else
-            echo "Yay is not installed..."
-            echo "Run setup.sh to install yay"
+            git clone https://aur.archlinux.org/yay-bin.git --depth=1
+            cd yay-bin
+            yes | makepkg -si
+            cd ..
+            rm -rf yay-bin
+            yay -S --needed --noconfirm envycontrol
+            sudo envycontrol -s integrated
         fi
 
     fi
