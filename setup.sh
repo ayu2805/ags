@@ -56,6 +56,12 @@ sudo ufw allow CUPS
 sudo systemctl enable sshd avahi-daemon
 sudo cp /usr/share/doc/avahi/ssh.service /etc/avahi/services/
 sudo ufw allow SSH
+sudo ufw allow POP3
+sudo ufw allow POP3S
+sudo ufw allow IMAP
+sudo ufw allow IMAPS
+sudo ufw allow SMTP
+sudo ufw allow  "Mail submission"
 chsh -s /bin/fish
 sudo chsh -s /bin/fish
 pipx ensurepath
