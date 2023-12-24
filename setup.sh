@@ -95,13 +95,13 @@ echo ""
 echo "Installing Gnome..."
 echo ""
 sudo pacman -S --needed --noconfirm - <gnome
+pacman -Sgq gnome | grep -vf rpkg | sudo pacman -S --needed -
 if [ "$(pactree -r tlp)" ]; then
     echo ""
 else
     sudo pacman -S --needed --noconfirm power-profiles-daemon
     sudo systemctl enable power-profiles-daemon
 fi
-sudo pacman -Rscn --noconfirm - <rpkg
 sudo systemctl enable gdm
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
