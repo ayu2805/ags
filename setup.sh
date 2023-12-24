@@ -161,6 +161,17 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
+read -r -p "Do you want to install Cloudflare Warp? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    bash -c "$(curl -sS https://raw.githubusercontent.com/ayu2805/cwi/main/cloudflare-warp-install)"
+    echo ""
+    read -r -p "Do you want to install Gnome Extension Managaer(from Flathub)? [y/N] " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+        flatpak install -y flathub com.mattjakeman.ExtensionManager
+    fi
+fi
+
+echo ""
 read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     yay -Syu --needed --noconfirm vscodium-bin
