@@ -10,7 +10,7 @@ fi
 echo ""
 read -r -p "Do you want to install AMD/ATI drivers? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver vulkan-radeon #AMD/ATI
+    sudo pacman -Syu --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver vulkan-radeon amdvlk #AMD/ATI
 fi
 
 echo ""
