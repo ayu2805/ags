@@ -18,13 +18,6 @@ else
 fi
 
 sudo cp pacman.conf /etc/
-sudo cp endeavouros-mirrorlist /etc/pacman.d/endeavouros-mirrorlist
-version=$(pacman -Si endeavouros-keyring | grep "Version" | awk '{print $3}')
-wget -q -nc --show-progress https://github.com/endeavouros-team/repo/releases/download/endeavouros/endeavouros-keyring-$version-any.pkg.tar.zst
-sudo pacman -U endeavouros-keyring*
-rm endeavouros-keyring*
-sudo pacman-key --init
-sudo pacman-key --populate
 sudo rm -rf /etc/pacman.d/hooks/
 sudo mkdir /etc/pacman.d/hooks/
 sudo cp gutenprint.hook /etc/pacman.d/hooks/
@@ -41,6 +34,16 @@ fi
 
 echo ""
 sudo pacman -Syu --needed --noconfirm pacman-contrib
+if [ "$(pactree -r yay-bin)" ]; then
+    echo ""
+    echo "Yay is already installed"
+else
+    git clone https://aur.archlinux.org/yay-bin.git --depth=1
+    cd yay-bin
+    yes | makepkg -si
+    cd ..
+    rm -rf yay-bin
+fi
 
 echo ""
 read -r -p "Do you want to install Intel drivers? [y/N] " response
@@ -61,20 +64,12 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo systemctl enable nvidia-{suspend,resume,hibernate}
 
     echo ""
-    read -r -p "Do you want to install Envy Control? [y/N] " response
+    read -r -p "Do you want to install Envy Control(from AUR)? [y/N] " response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         echo ""
-        if [ "$(pactree -r yay)" ]; then
-            yay -S --needed --noconfirm envycontrol
-            sudo envycontrol -s integrated
-        else
-            sudo pacman -S --needed --noconfirm yay
-            yay -S --needed --noconfirm envycontrol
-            sudo envycontrol -s integrated
-        fi
-
+        yay -S --needed --noconfirm envycontrol
+        sudo envycontrol -s integrated
     fi
-
 fi
 
 echo ""
