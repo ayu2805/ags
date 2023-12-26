@@ -18,16 +18,13 @@ else
 fi
 
 sudo cp pacman.conf /etc/
-wget -q -nc --show-progress https://raw.githubusercontent.com/endeavouros-team/iso-autobuild/main/endeavouros-mirrorlist
 sudo cp endeavouros-mirrorlist /etc/pacman.d/endeavouros-mirrorlist
-rm endeavouros-mirrorlist
-git clone https://github.com/endeavouros-team/keyring.git --depth=1
-cd keyring/
-sudo make install
-cd ..
-rm -rf keyring/
+version=$(pacman -Si endeavouros-keyring | grep "Version" | awk '{print $3}')
+wget -q -nc --show-progress https://github.com/endeavouros-team/repo/releases/download/endeavouros/endeavouros-keyring-$version-any.pkg.tar.zst
+sudo pacman -U endeavouros-keyring*
+rm endeavouros-keyring*
 sudo pacman-key --init
-sudo pacman-key --populate endeavouros
+sudo pacman-key --populate
 sudo rm -rf /etc/pacman.d/hooks/
 sudo mkdir /etc/pacman.d/hooks/
 sudo cp gutenprint.hook /etc/pacman.d/hooks/
