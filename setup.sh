@@ -18,10 +18,20 @@ else
 fi
 
 sudo cp pacman.conf /etc/
+sudo rm /etc/pacman.d/endeavouros-mirrorlist
+sudo touch /etc/pacman.d/endeavouros-mirrorlist
+curl -s https://raw.githubusercontent.com/endeavouros-team/iso-autobuild/main/endeavouros-mirrorlist | sudo tee /etc/pacman.d/endeavouros-mirrorlist
+git clone https://github.com/endeavouros-team/keyring.git --depth=1
+cd keyring/
+sudo make install
+cd ..
+rm -rf keyring/
+sudo pacman-key --init
+sudo pacman-key --populate endeavouros
 sudo rm -rf /etc/pacman.d/hooks/
 sudo mkdir /etc/pacman.d/hooks/
 sudo cp gutenprint.hook /etc/pacman.d/hooks/
-sudo pacman -Syu --needed --noconfirm pacman-contrib
+
 echo ""
 read -r -p "Do you want to install Reflector? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
@@ -33,14 +43,41 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-if [ "$(pactree -r yay-bin)" ]; then
-    echo "Yay is already installed"
-else
-    git clone https://aur.archlinux.org/yay-bin.git --depth=1
-    cd yay-bin
-    yes | makepkg -si
-    cd ..
-    rm -rf yay-bin
+sudo pacman -Syu --needed --noconfirm pacman-contrib
+
+echo ""
+read -r -p "Do you want to install Intel drivers? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    sudo pacman -Syu --needed --noconfirm mesa libva-intel-driver intel-media-driver vulkan-intel #Intel
+fi
+
+echo ""
+read -r -p "Do you want to install AMD/ATI drivers? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    sudo pacman -Syu --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver vulkan-radeon amdvlk #AMD/ATI
+fi
+
+echo ""
+read -r -p "Do you want to install Nvidia drivers? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    sudo pacman -Syu --needed --noconfirm nvidia nvidia-utils nvidia-settings nvidia-prime opencl-nvidia #NVIDIA
+    sudo systemctl enable nvidia-{suspend,resume,hibernate}
+
+    echo ""
+    read -r -p "Do you want to install Envy Control? [y/N] " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+        echo ""
+        if [ "$(pactree -r yay)" ]; then
+            yay -S --needed --noconfirm envycontrol
+            sudo envycontrol -s integrated
+        else
+            sudo pacman -S --needed --noconfirm yay
+            yay -S --needed --noconfirm envycontrol
+            sudo envycontrol -s integrated
+        fi
+
+    fi
+
 fi
 
 echo ""
@@ -66,7 +103,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed --noconfirm samba
     sudo cp smb.conf /etc/samba/
     sudo systemctl enable smb nmb
-    echo -e "[Share]\ncomment = Samba Share\npath = /home/"$(whoami)"/Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
+    echo -e "[Share]\ncomment = Samba Share\npath = /home/"$un"/Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
     mkdir ~/Share
     echo ""
     sudo smbpasswd -a $un
