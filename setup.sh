@@ -20,6 +20,7 @@ fi
 sudo cp pacman.conf /etc/
 wget -q -nc --show-progress https://raw.githubusercontent.com/endeavouros-team/iso-autobuild/main/endeavouros-mirrorlist
 sudo cp endeavouros-mirrorlist /etc/pacman.d/endeavouros-mirrorlist
+rm endeavouros-mirrorlist
 git clone https://github.com/endeavouros-team/keyring.git --depth=1
 cd keyring/
 sudo make install
