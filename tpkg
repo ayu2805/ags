@@ -43,6 +43,7 @@ python-pyqt5
 python-pyqt6
 sshfs
 touchegg
+ttf-liberation
 ufw
 usbutils
 wget
