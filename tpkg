@@ -25,6 +25,7 @@ gutenprint
 jdk-openjdk
 libreoffice-fresh
 libsecret
+lrzip
 man-db
 mpv
 mtools
@@ -37,15 +38,19 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
+p7zip
 python-pip
 python-pipx
 python-pynvim
 python-pyqt5
 python-pyqt6
+squashfs-tools
 sshfs
 touchegg
 ttf-liberation
 ufw
+unace
+unrar
 usbutils
 wget
 wl-clipboard
