@@ -193,7 +193,7 @@ echo ""
 read -r -p "Do you want to install Cloudflare Warp? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
-    bash -c "$(curl -sS https://raw.githubusercontent.com/ayu2805/cwi/main/cloudflare-warp-install)"
+    wget -q -nc --show-progress https://github.com/ayu2805/cwi/releases/download/cloudflare-warp-install/cloudflare-warp-install && bash cloudflare-warp-install && rm cloudflare-warp-install
     echo ""
     read -r -p "Do you want to install Gnome Extension Managaer(from Flathub)? [y/N] " response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
