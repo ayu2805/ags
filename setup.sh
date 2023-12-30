@@ -58,7 +58,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-read -r -p "Do you want to install Nvidia drivers? [y/N] " response
+read -r -p "Do you want to install Nvidia drivers(Maxwell+)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed --noconfirm nvidia nvidia-utils nvidia-settings nvidia-prime opencl-nvidia #NVIDIA
     sudo systemctl enable nvidia-{suspend,resume,hibernate}
@@ -66,10 +66,24 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
     read -r -p "Do you want to install Envy Control(from AUR)? [y/N] " response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-        echo ""
         yay -S --needed --noconfirm envycontrol
         sudo envycontrol -s integrated
     fi
+fi
+
+echo ""
+echo "SKIP THIS IF YOU DO NOT HAVE GRAPHICS CARD FROM KEPLER SERIES"
+echo ""
+read -r -p "Do you want to install Nvidia drivers(Kepler)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -Syu --needed --noconfirm nvidia-470xx-dkms nvidia-470xx-utils nvidia-470xx-settings nvidia-prime opencl-nvidia-470xx
+    sudo systemctl enable nvidia-{suspend,resume,hibernate}
+
+echo ""
+read -r -p "Do you want to install Envy Control? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -S --needed -noconfirm envycontrol
+    sudo envycontrol -s integrated
 fi
 
 echo ""
