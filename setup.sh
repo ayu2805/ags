@@ -79,11 +79,12 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     yay -Syu --needed --noconfirm nvidia-470xx-dkms nvidia-470xx-utils nvidia-470xx-settings nvidia-prime opencl-nvidia-470xx
     sudo systemctl enable nvidia-{suspend,resume,hibernate}
 
-echo ""
-read -r -p "Do you want to install Envy Control? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -S --needed -noconfirm envycontrol
-    sudo envycontrol -s integrated
+    echo ""
+    read -r -p "Do you want to install Envy Control? [y/N] " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+        yay -S --needed -noconfirm envycontrol
+        sudo envycontrol -s integrated
+    fi
 fi
 
 echo ""
