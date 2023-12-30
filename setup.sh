@@ -94,7 +94,7 @@ sudo systemctl enable --now ufw
 sudo ufw enable
 sudo systemctl enable --now cups
 sudo cp cups /etc/ufw/applications.d/
-sudo cupsctl --share-printers
+sudo cupsctl
 sudo ufw app update CUPS
 sudo ufw allow CUPS
 sudo systemctl enable sshd avahi-daemon
