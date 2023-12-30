@@ -47,6 +47,7 @@ python-pyqt5
 python-pyqt6
 squashfs-tools
 sshfs
+system-config-printer
 touchegg
 ttf-caladea
 ttf-carlito
