@@ -154,6 +154,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
+gsettings set org.gnome.mutter center-new-windows true
 
 echo ""
 read -r -p "Do you want to install Libadwaita theme for GTK3? [y/N] " response
