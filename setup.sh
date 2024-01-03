@@ -138,6 +138,7 @@ rm -rf WhiteSur-icon-theme/
 echo ""
 echo "Installing Gnome..."
 echo ""
+sudo pacman -Syu --needed --noconfirm - < gnome
 pacman -Sgq gnome | grep -vf rpkg | sudo pacman -S --needed --noconfirm -
 if [ "$(pactree -r tlp)" ]; then
     echo ""
