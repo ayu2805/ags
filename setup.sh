@@ -102,6 +102,8 @@ sudo cp /usr/share/doc/avahi/ssh.service /etc/avahi/services/
 sudo ufw allow SSH
 chsh -s /bin/fish
 sudo chsh -s /bin/fish
+pipx ensurepath
+register-python-argcomplete --shell fish pipx >~/.config/fish/completions/pipx.fish
 
 echo ""
 read -r -p "Do you want to install Samba? [y/N] " response
