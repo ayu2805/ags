@@ -247,7 +247,7 @@ gnome-extensions enable dash-to-dock@micxgx.gmail.com
 tag=$(git ls-remote --tags https://github.com/stuarthayhurst/alphabetical-grid-extension.git | awk -F"/" '{print $3}'| sort -V | tail -1)
 wget -q -nc --show-progress https://github.com/stuarthayhurst/alphabetical-grid-extension/releases/download/$tag/AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
 rm -rf AlphabeticalAppGrid@stuarthayhurst/
-unzip -do ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/ AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
+unzip -d ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/ AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
 rm AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
 gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
 
