@@ -225,10 +225,9 @@ read -r -p "Do you want to install Cloudflare Warp? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
     wget -q -nc --show-progress https://github.com/ayu2805/cwi/releases/download/cloudflare-warp-install/cloudflare-warp-install && bash cloudflare-warp-install && rm cloudflare-warp-install
-
-echo ""
-echo "Waiting for 5 seconds..."
-sleep 5
+    echo ""
+    echo "Waiting for 5 seconds..."
+    sleep 5
 fi
 
 echo ""
