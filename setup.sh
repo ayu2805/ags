@@ -208,6 +208,19 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
+read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -Syu --needed --noconfirm vscodium-bin
+fi
+
+echo ""
+read -r -p "Do you want to install HPLIP (Driver for HP printers)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    sudo pacman -Syu --needed --noconfirm hplip sane python-pillow rpcbind python-reportlab
+    hp-plugin -i
+fi
+
+echo ""
 read -r -p "Do you want to install Cloudflare Warp? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
@@ -222,19 +235,6 @@ echo ""
 read -r -p "Do you want to install Gnome Extension Managaer(from Flathub)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     flatpak install -y flathub com.mattjakeman.ExtensionManager
-fi
-
-echo ""
-read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -Syu --needed --noconfirm vscodium-bin
-fi
-
-echo ""
-read -r -p "Do you want to install HPLIP (Driver for HP printers)? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm hplip sane python-pillow rpcbind python-reportlab
-    hp-plugin -i
 fi
 
 cp QtProject.conf ~/.config/
