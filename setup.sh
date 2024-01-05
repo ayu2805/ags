@@ -252,13 +252,13 @@ gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
 
 tag=$(git ls-remote --tags https://github.com/JoseExposito/gnome-shell-extension-x11gestures.git | awk -F"/" '{print $3}'| sort -V | tail -1)
 wget -q -nc --show-progress https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/download/$tag/x11gestures@joseexposito.github.io.zip
-unzip -d ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/x11gestures@joseexposito.github.io/ x11gestures@joseexposito.github.io.zip 
+unzip -d ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/ x11gestures@joseexposito.github.io.zip 
 rm x11gestures@joseexposito.github.io.zip
 gnome-extensions enable x11gestures@joseexposito.github.io
 
 tag=$(git ls-remote --tags https://github.com/LorenzoMorelli/GPU_profile_selector.git | awk -F"/" '{print $3}'| sort -V | tail -1)
 wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/download/$tag/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
-unzip -d ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/GPU_profile_selector@lorenzo9904.gmail.com/ GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
+unzip -d ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/ GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
 rm GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
 gnome-extensions enable GPU_profile_selector@lorenzo9904.gmail.com
 
