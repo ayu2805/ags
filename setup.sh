@@ -248,6 +248,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     gnome-extensions enable caffeine@patapon.info
     gnome-extensions enable dash-to-dock@micxgx.gmail.com
 
+    echo ""
     tag=$(git ls-remote --tags https://github.com/stuarthayhurst/alphabetical-grid-extension.git | awk -F"/" '{print $3}'| sort -V | tail -1)
     wget -q -nc --show-progress https://github.com/stuarthayhurst/alphabetical-grid-extension/releases/download/$tag/AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
     rm -rf ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
