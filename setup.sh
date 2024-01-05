@@ -231,39 +231,44 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-read -r -p "Do you want to install Gnome Extension Managaer(from Flathub)? [y/N] " response
+read -r -p "Do you want to install Gnome Extension Manager(from Flathub)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     flatpak install -y flathub com.mattjakeman.ExtensionManager
 fi
 
 cp QtProject.conf ~/.config/
 
-yay -S --needed --noconfirm gnome-shell-extension-dash-to-dock
-gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable caffeine@patapon.info
-gnome-extensions enable dash-to-dock@micxgx.gmail.com
+echo ""
+read -r -p "Do you want to install some extentions that can be necessary? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    echo ""
+    yay -S --needed --noconfirm gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock
+    gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
+    gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
+    gnome-extensions enable caffeine@patapon.info
+    gnome-extensions enable dash-to-dock@micxgx.gmail.com
 
-tag=$(git ls-remote --tags https://github.com/stuarthayhurst/alphabetical-grid-extension.git | awk -F"/" '{print $3}'| sort -V | tail -1)
-wget -q -nc --show-progress https://github.com/stuarthayhurst/alphabetical-grid-extension/releases/download/$tag/AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
-rm -rf ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
-unzip -q AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
-rm AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
-gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
+    tag=$(git ls-remote --tags https://github.com/stuarthayhurst/alphabetical-grid-extension.git | awk -F"/" '{print $3}'| sort -V | tail -1)
+    wget -q -nc --show-progress https://github.com/stuarthayhurst/alphabetical-grid-extension/releases/download/$tag/AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
+    rm -rf ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
+    unzip -q AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
+    rm AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
+    gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
 
-tag=$(git ls-remote --tags https://github.com/JoseExposito/gnome-shell-extension-x11gestures.git | awk -F"/" '{print $3}'| sort -V | tail -1)
-wget -q -nc --show-progress https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/download/$tag/x11gestures@joseexposito.github.io.zip
-rm -rf ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/
-unzip -q x11gestures@joseexposito.github.io.zip -d ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/
-rm x11gestures@joseexposito.github.io.zip
-gnome-extensions enable x11gestures@joseexposito.github.io
+    tag=$(git ls-remote --tags https://github.com/JoseExposito/gnome-shell-extension-x11gestures.git | awk -F"/" '{print $3}'| sort -V | tail -1)
+    wget -q -nc --show-progress https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/download/$tag/x11gestures@joseexposito.github.io.zip
+    rm -rf ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/
+    unzip -q x11gestures@joseexposito.github.io.zip -d ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/
+    rm x11gestures@joseexposito.github.io.zip
+    gnome-extensions enable x11gestures@joseexposito.github.io
 
-tag=$(git ls-remote --tags https://github.com/LorenzoMorelli/GPU_profile_selector.git | awk -F"/" '{print $3}'| sort -V | tail -1)
-wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/download/$tag/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
-rm -rf ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
-unzip -q GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
-rm GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
-gnome-extensions enable GPU_profile_selector@lorenzo9904.gmail.com
+    tag=$(git ls-remote --tags https://github.com/LorenzoMorelli/GPU_profile_selector.git | awk -F"/" '{print $3}'| sort -V | tail -1)
+    wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/download/$tag/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
+    rm -rf ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
+    unzip -q GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
+    rm GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
+    gnome-extensions enable GPU_profile_selector@lorenzo9904.gmail.com
+fi
 
 echo ""
 echo "You can now reboot your system"
