@@ -266,12 +266,14 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     rm x11gestures@joseexposito.github.io.zip
     gnome-extensions enable x11gestures@joseexposito.github.io
 
-    tag=$(git ls-remote --tags https://github.com/LorenzoMorelli/GPU_profile_selector.git | awk -F"/" '{print $3}'| sort -V | tail -1)
-    wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/download/$tag/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
-    rm -rf ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
-    unzip -q GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
-    rm GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
-    gnome-extensions enable GPU_profile_selector@lorenzo9904.gmail.com
+    if [ "$(pactree -r envycontrol)" ]; then
+        tag=$(git ls-remote --tags https://github.com/LorenzoMorelli/GPU_profile_selector.git | awk -F"/" '{print $3}'| sort -V | tail -1)
+        wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/download/$tag/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
+        rm -rf ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
+        unzip -q GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
+        rm GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
+        gnome-extensions enable GPU_profile_selector@lorenzo9904.gmail.com
+    fi
 fi
 
 echo ""
