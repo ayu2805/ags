@@ -1,12 +1,10 @@
 accountsservice
 android-tools
 aria2
-bleachbit
 cups-pdf
 dbus-python
 dosfstools
 exfatprogs
-file-roller
 firefox
 fish
 foomatic-db
@@ -15,11 +13,7 @@ foomatic-db-nonfree
 fuse2
 fuse3
 git
-gnome-keyring
 gnu-free-fonts
-gpart
-gparted
-gthumb
 gtk-engine-murrine
 gutenprint
 jdk-openjdk
@@ -31,8 +25,6 @@ mpv
 mtools
 neofetch
 neovim
-networkmanager-openvpn
-networkmanager-pptp
 nftables
 noto-fonts
 noto-fonts-cjk
@@ -61,4 +53,3 @@ wl-clipboard
 xorg-server
 xsel
 yt-dlp
-zenity
