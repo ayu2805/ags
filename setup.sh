@@ -48,19 +48,19 @@ fi
 echo ""
 read -r -p "Do you want to install Intel drivers? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm mesa libva-intel-driver intel-media-driver vulkan-intel #Intel
+    sudo pacman -S --needed --noconfirm mesa libva-intel-driver intel-media-driver vulkan-intel #Intel
 fi
 
 echo ""
 read -r -p "Do you want to install AMD/ATI drivers? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver vulkan-radeon amdvlk #AMD/ATI
+    sudo pacman -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver vulkan-radeon amdvlk #AMD/ATI
 fi
 
 echo ""
 read -r -p "Do you want to install Nvidia drivers(Maxwell+)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm nvidia nvidia-utils nvidia-settings nvidia-prime opencl-nvidia #NVIDIA
+    sudo pacman -S --needed --noconfirm nvidia nvidia-utils nvidia-settings nvidia-prime opencl-nvidia #NVIDIA
     sudo systemctl enable nvidia-{suspend,resume,hibernate}
 
     echo ""
@@ -76,7 +76,7 @@ echo "SKIP THIS IF YOU DO NOT HAVE GRAPHICS CARD FROM KEPLER SERIES"
 echo ""
 read -r -p "Do you want to install Nvidia drivers(Kepler)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -Syu --needed --noconfirm nvidia-470xx-dkms nvidia-470xx-utils nvidia-470xx-settings nvidia-prime opencl-nvidia-470xx linux-headers
+    yay -S --needed --noconfirm nvidia-470xx-dkms nvidia-470xx-utils nvidia-470xx-settings nvidia-prime opencl-nvidia-470xx linux-headers
     sudo systemctl enable nvidia-{suspend,resume,hibernate}
 
     echo ""
@@ -88,7 +88,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-sudo pacman -Syu --needed --noconfirm - < tpkg
+sudo pacman -S --needed --noconfirm - < tpkg
 sudo systemctl enable touchegg
 sudo systemctl enable --now ufw
 sudo ufw enable
@@ -108,7 +108,7 @@ register-python-argcomplete --shell fish pipx >~/.config/fish/completions/pipx.f
 echo ""
 read -r -p "Do you want to install Samba? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm samba
+    sudo pacman -S --needed --noconfirm samba
     sudo cp smb.conf /etc/samba/
     sudo systemctl enable smb nmb
     echo -e "[Share]\ncomment = Samba Share\npath = /home/"$un"/Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
@@ -139,7 +139,7 @@ rm -rf WhiteSur-icon-theme/
 echo ""
 echo "Installing Gnome..."
 echo ""
-sudo pacman -Syu --needed --noconfirm - < gnome
+sudo pacman -S --needed --noconfirm - < gnome
 pacman -Sgq gnome | grep -vf rpkg | sudo pacman -S --needed --noconfirm -
 if [ "$(pactree -r tlp)" ]; then
     echo ""
@@ -203,20 +203,14 @@ fi
 echo ""
 read -r -p "Do you want Bluetooth Service? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm bluez bluez-utils blueman
+    sudo pacman -S --needed --noconfirm bluez bluez-utils blueman
     sudo systemctl enable bluetooth
-fi
-
-echo ""
-read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -Syu --needed --noconfirm vscodium-bin
 fi
 
 echo ""
 read -r -p "Do you want to install HPLIP (Driver for HP printers)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed --noconfirm hplip sane python-pillow rpcbind python-reportlab
+    sudo pacman -S --needed --noconfirm hplip sane python-pillow rpcbind python-reportlab
     hp-plugin -i
 fi
 
@@ -231,9 +225,15 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-read -r -p "Do you want to install Gnome Extension Manager(from Flathub)? [y/N] " response
+read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    flatpak install -y flathub com.mattjakeman.ExtensionManager
+    yay -S --needed --noconfirm vscodium-bin
+fi
+
+echo ""
+read -r -p "Do you want to install Eclipse IDE for Java Developers (from AUR)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -S --needed --noconfirm eclipse-java
 fi
 
 cp QtProject.conf ~/.config/
