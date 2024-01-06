@@ -215,6 +215,12 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
+read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -S --needed --noconfirm vscodium-bin
+fi
+
+echo ""
 read -r -p "Do you want to install Cloudflare Warp? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
@@ -222,12 +228,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
     echo "Waiting for 5 seconds..."
     sleep 5
-fi
-
-echo ""
-read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -S --needed --noconfirm vscodium-bin
 fi
 
 echo ""
