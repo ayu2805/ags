@@ -88,7 +88,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-sudo pacman -S --needed --noconfirm - < tpkg
+sudo pacman -S --needed --noconfirm - <tpkg
 sudo systemctl enable touchegg
 sudo systemctl enable --now ufw
 sudo ufw enable
