@@ -51,5 +51,6 @@ usbutils
 wget
 wl-clipboard
 xorg-server
+xf86-input-evdev
 xsel
 yt-dlp
