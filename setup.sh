@@ -157,7 +157,7 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 gsettings set org.gnome.mutter center-new-windows true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
-sudo xdg-mime default org.gnome.Nautilus.desktop inode/directory
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 echo ""
 read -r -p "Do you want to install Libadwaita theme for GTK3? [y/N] " response
