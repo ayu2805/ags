@@ -252,6 +252,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
     gsettings set org.gnome.shell.extensions.dash-to-dock show-icons-emblems false
     gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
+    gsettings set org.gnome.shell.extensions.dash-to-dock intellihide-mode \'ALL_WINDOWS\'
 
     echo ""
     mkdir -p ~/.local/share/gnome-shell/extensions/
