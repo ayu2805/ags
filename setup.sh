@@ -250,6 +250,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     gnome-extensions enable dash-to-dock@micxgx.gmail.com
     gsettings set org.gnome.shell.extensions.dash-to-dock disable-overview-on-startup true
     gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
+    gsettings set org.gnome.shell.extensions.dash-to-dock show-icons-emblems false
 
     echo ""
     mkdir -p ~/.local/share/gnome-shell/extensions/
