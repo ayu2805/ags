@@ -94,9 +94,12 @@ sudo systemctl enable --now ufw
 sudo ufw enable
 sudo systemctl enable --now cups
 sudo cp cups /etc/ufw/applications.d/
+sudo cp gsconnect /etc/ufw/applications.d/
 sudo cupsctl
 sudo ufw app update CUPS
 sudo ufw allow CUPS
+sudo ufw app update GSConnect
+sudo ufw allow GSConnect
 sudo systemctl enable sshd avahi-daemon
 sudo cp /usr/share/doc/avahi/ssh.service /etc/avahi/services/
 sudo ufw allow SSH
