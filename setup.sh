@@ -221,6 +221,12 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
+read -r -p "Do you want to install Code-OSS? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    sudo pacman -S --needed --noconfirm code
+fi
+
+echo ""
 read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     yay -S --needed --noconfirm vscodium-bin
