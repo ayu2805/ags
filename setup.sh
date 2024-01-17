@@ -223,13 +223,13 @@ fi
 echo ""
 read -r -p "Do you want to install VS Codium (from Flathub)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    flatpak install --noninteractive flathub com.vscodium.codium
+    flatpak install -y flathub com.vscodium.codium
 fi
 
 echo ""
 read -r -p "Do you want to install Telegram (from Flathub)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    flatpak install --noninteractive flathub org.telegram.desktop
+    flatpak install -y flathub org.telegram.desktop
 fi
 
 echo ""
