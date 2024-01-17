@@ -221,9 +221,9 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-read -r -p "Do you want to install VS Codium (from Flathub)? [y/N] " response
+read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    flatpak install -y flathub com.vscodium.codium
+    yay -S --needed --noconfirm vscodium-bin
 fi
 
 echo ""
