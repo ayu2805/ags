@@ -221,9 +221,15 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
+read -r -p "Do you want to install VS Codium (from Flathub)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -S --needed --noconfirm vscodium-bin
+    flatpak install --noninteractive flathub com.vscodium.codium
+fi
+
+echo ""
+read -r -p "Do you want to install Telegram (from Flathub)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    flatpak install --noninteractive flathub org.telegram.desktop
 fi
 
 echo ""
@@ -234,12 +240,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
     echo "Waiting for 5 seconds..."
     sleep 5
-fi
-
-echo ""
-read -r -p "Do you want to install Eclipse IDE for Java Developers (from AUR)? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -S --needed --noconfirm eclipse-java
 fi
 
 cp QtProject.conf ~/.config/
