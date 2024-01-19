@@ -233,9 +233,9 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-read -r -p "Do you want to install Telegram (from Flathub)? [y/N] " response
+read -r -p "Do you want to install Telegram? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    flatpak install -y flathub org.telegram.desktop
+    sudo pacman -S --needed --noconfirm telegram-desktop
 fi
 
 echo ""
