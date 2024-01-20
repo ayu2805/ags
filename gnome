@@ -1,12 +1,12 @@
+bleachbit
+file-roller
 gnome-browser-connector
 gnome-terminal
 gnome-tweaks
-seahorse
 gpart
 gparted
 gthumb
-bleachbit
-file-roller
-zenity
-python-nautilus
 mpv
+python-nautilus
+seahorse
+zenity
