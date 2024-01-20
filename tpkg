@@ -21,7 +21,6 @@ libreoffice-fresh
 libsecret
 lrzip
 man-db
-mpv
 mtools
 neofetch
 neovim
@@ -44,6 +43,7 @@ touchegg
 ttf-caladea
 ttf-carlito
 ttf-croscore
+ttf-dejavu
 ttf-liberation
 ufw
 unrar
