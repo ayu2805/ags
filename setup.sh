@@ -207,6 +207,13 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
+read -r -p "Do you want to install Chromium(and remove Firefox)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    sudo pacman -Rscn firefox
+    sudo pacman -S --needed --noconfirm chromium
+fi
+
+echo ""
 read -r -p "Do you want Bluetooth Service? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -S --needed --noconfirm bluez bluez-utils blueman
@@ -230,6 +237,12 @@ echo ""
 read -r -p "Do you want to install VS Codium (from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     yay -S --needed --noconfirm vscodium-bin
+fi
+
+echo ""
+read -r -p "Do you want to install Eclipse (from AUR)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -S --needed --noconfirm eclipse-java
 fi
 
 echo ""
