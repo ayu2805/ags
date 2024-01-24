@@ -97,12 +97,6 @@ sudo systemctl enable touchegg
 sudo systemctl enable --now ufw
 sudo systemctl enable --now cups
 sudo cp smb.conf /etc/samba/
-sudo rm -rf /var/lib/samba/usershares
-sudo mkdir /var/lib/samba/usershares
-sudo groupadd -r sambashare
-sudo chown root:sambashare /var/lib/samba/usershares
-sudo chmod 1770 /var/lib/samba/usershares
-sudo gpasswd sambashare -a $un
 echo ""
 sudo smbpasswd -a $un
 echo ""
@@ -128,10 +122,10 @@ pipx ensurepath
 #register-python-argcomplete --shell fish pipx >~/.config/fish/completions/pipx.fish
 
 echo ""
-read -r -p "Do you want to create a Samba shared folder? [y/N] " response
+read -r -p "Do you want to create a Samba Shared folder? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    echo -e "[Share]\ncomment = Samba Share\npath = /home/"$un"/Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
-    mkdir ~/Share
+    echo -e "[Share]\ncomment = Samba Share\npath = /home/"$un"/Samba\ Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
+    mkdir ~/Samba\ Share
 fi
 
 #sudo sed -i 's/Logo=1/Logo=0/' /etc/libreoffice/sofficerc
