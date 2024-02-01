@@ -283,13 +283,11 @@ echo ""
 read -r -p "Do you want to install some extentions that can be necessary? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
-    sudo pacman -S --needed --noconfirm gnome-shell-extension-{caffeine,appindicator,desktop-icons-ng}
-    sudo pacman -S --needed --noconfirm libappindicator-{gtk2,gtk3}
+    sudo pacman -S --needed --noconfirm gnome-shell-extension-{caffeine,desktop-icons-ng}
     yay -S --needed --noconfirm --answerclean A --answerdiff N --removemake gnome-shell-extension-dash-to-dock
     gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
     gnome-extensions enable light-style@gnome-shell-extensions.gcampax.github.com
     gnome-extensions enable caffeine@patapon.info
-    gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
     gnome-extensions enable ding@rastersoft.com
     gnome-extensions enable dash-to-dock@micxgx.gmail.com
     gsettings set org.gnome.shell.extensions.dash-to-dock disable-overview-on-startup true
