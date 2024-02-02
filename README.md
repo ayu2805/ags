@@ -13,4 +13,4 @@ For more customization you can install these extension:
 (Folow this [link](https://github.com/bayasdev/envycontrol) to learn about envycontrol.)
  - [Firefox Gnome Theme](https://github.com/rafaelmardojai/firefox-gnome-theme#one-command-install-with-curl)
 
-> '*' signifies that it will be automatically be installed by the script.
+> '*' signifies that it can be installed by the script.
