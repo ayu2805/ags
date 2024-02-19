@@ -322,11 +322,11 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     unzip -q dash-to-dock@micxgx.gmail.com.zip -d ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/
     rm dash-to-dock@micxgx.gmail.com.zip
     gnome-extensions enable dash-to-dock@micxgx.gmail.com
-    gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
-    gsettings set org.gnome.shell.extensions.dash-to-dock show-icons-emblems false
-    gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
-    gsettings set org.gnome.shell.extensions.dash-to-dock intellihide-mode \'ALL_WINDOWS\'
-    gsettings set org.gnome.shell.extensions.dash-to-dock click-action \'minimize\'
+    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock show-trash false
+    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock show-icons-emblems false
+    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
+    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock intellihide-mode \'ALL_WINDOWS\'
+    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock click-action \'minimize\'
 
     if [ "$(pactree -r envycontrol)" ]; then
         wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/latest/download/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
