@@ -304,47 +304,49 @@ read -r -p "Do you want to install some extentions that can be necessary? [y/N] 
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
     sudo pacman -S --needed --noconfirm gnome-shell-extension-caffeine
-    yay -S --needed --noconfirm --answerclean A --answerdiff N --removemake gnome-shell-extension-dash-to-dock
     gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
     gnome-extensions enable light-style@gnome-shell-extensions.gcampax.github.com
     gnome-extensions enable caffeine@patapon.info
+
+    echo ""
+    mkdir -p ~/.local/share/gnome-shell/extensions/
+    
+    wget -q -nc --show-progress https://github.com/stuarthayhurst/alphabetical-grid-extension/releases/latest/download/AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
+    rm -rf ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
+    unzip -q AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
+    rm AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
+    gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
+    
+    wget -q -nc --show-progress https://github.com/micheleg/dash-to-dock/releases/latest/download/dash-to-dock@micxgx.gmail.com.zip
+    rm -rf ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/
+    unzip -q dash-to-dock@micxgx.gmail.com.zip -d ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/
+    rm dash-to-dock@micxgx.gmail.com.zip
     gnome-extensions enable dash-to-dock@micxgx.gmail.com
     gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
     gsettings set org.gnome.shell.extensions.dash-to-dock show-icons-emblems false
     gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
     gsettings set org.gnome.shell.extensions.dash-to-dock intellihide-mode \'ALL_WINDOWS\'
-
-    echo ""
-    mkdir -p ~/.local/share/gnome-shell/extensions/
-    tag=$(git ls-remote --tags https://github.com/stuarthayhurst/alphabetical-grid-extension.git | awk -F"/" '{print $3}'| sort -V | tail -1)
-    wget -q -nc --show-progress https://github.com/stuarthayhurst/alphabetical-grid-extension/releases/download/$tag/AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
-    rm -rf ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
-    unzip -q AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
-    rm AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
-    gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
-
-    tag=$(git ls-remote --tags https://github.com/JoseExposito/gnome-shell-extension-x11gestures.git | awk -F"/" '{print $3}'| sort -V | tail -1)
-    wget -q -nc --show-progress https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/download/$tag/x11gestures@joseexposito.github.io.zip
-    rm -rf ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/
-    unzip -q x11gestures@joseexposito.github.io.zip -d ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/
-    rm x11gestures@joseexposito.github.io.zip
-    gnome-extensions enable x11gestures@joseexposito.github.io
-
-    tag=$(git ls-remote --tags https://github.com/GSConnect/gnome-shell-extension-gsconnect.git | awk -F"/" '{print $3}'| sort -V | tail -1)
-    wget -q -nc --show-progress https://github.com/GSConnect/gnome-shell-extension-gsconnect/releases/download/$tag/gsconnect@andyholmes.github.io.zip
-    rm -rf ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
-    unzip -q gsconnect@andyholmes.github.io.zip -d ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
-    rm gsconnect@andyholmes.github.io.zip
-    gnome-extensions enable gsconnect@andyholmes.github.io
+    gsettings set org.gnome.shell.extensions.dash-to-dock click-action \'minimize\'
 
     if [ "$(pactree -r envycontrol)" ]; then
-        tag=$(git ls-remote --tags https://github.com/LorenzoMorelli/GPU_profile_selector.git | awk -F"/" '{print $3}'| sort -V | tail -1)
-        wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/download/$tag/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
+        wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/latest/download/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
         rm -rf ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
         unzip -q GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
         rm GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
         gnome-extensions enable GPU_profile_selector@lorenzo9904.gmail.com
     fi
+    
+    wget -q -nc --show-progress https://github.com/GSConnect/gnome-shell-extension-gsconnect/releases/latest/download/gsconnect@andyholmes.github.io.zip
+    rm -rf ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
+    unzip -q gsconnect@andyholmes.github.io.zip -d ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
+    rm gsconnect@andyholmes.github.io.zip
+    gnome-extensions enable gsconnect@andyholmes.github.io
+    
+    wget -q -nc --show-progress https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/latest/download/x11gestures@joseexposito.github.io.zip
+    rm -rf ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/
+    unzip -q x11gestures@joseexposito.github.io.zip -d ~/.local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io/
+    rm x11gestures@joseexposito.github.io.zip
+    gnome-extensions enable x11gestures@joseexposito.github.io
 fi
 
 echo ""
