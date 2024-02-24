@@ -71,6 +71,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils nvidia-settings nvidia-prime opencl-nvidia #NVIDIA
     #sudo sed -i 's/MODULES=\(.*\)/MODULES=\(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
     #sudo mkinitcpio -P
+    sudo systemctl enable nvidia-persistenced
 
     echo ""
     read -r -p "Do you want to install Envy Control(from AUR)? [y/N] " response
