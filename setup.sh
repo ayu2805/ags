@@ -164,7 +164,7 @@ gsettings set org.gnome.mutter center-new-windows true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled-on-external-mouse
 gsettings set org.gnome.desktop.peripherals.touchpad speed 0.2
-gsettings set org.gnome.desktop.privacy old-files-age uint32 7
+gsettings set org.gnome.desktop.privacy old-files-age uint32\ 7
 gsettings set org.gnome.desktop.privacy remember-recent-files false
 gsettings set org.gnome.desktop.privacy remove-old-temp-files true
 gsettings set org.gnome.desktop.privacy remove-old-trash-files true
