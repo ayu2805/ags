@@ -290,14 +290,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dance-urgent-applications false
     gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock intellihide-mode \'ALL_WINDOWS\'
     gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock click-action \'minimize\'
-
-    if [ "$(pactree -r envycontrol)" ]; then
-        wget -q -nc --show-progress https://github.com/LorenzoMorelli/GPU_profile_selector/releases/latest/download/GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
-        rm -rf ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
-        unzip -q GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/GPU_profile_selector@lorenzo9904.gmail.com/
-        rm GPU_profile_selector@lorenzo9904.gmail.com.shell-extension.zip
-        gnome-extensions enable GPU_profile_selector@lorenzo9904.gmail.com
-    fi
     
     wget -q -nc --show-progress https://github.com/GSConnect/gnome-shell-extension-gsconnect/releases/latest/download/gsconnect@andyholmes.github.io.zip
     rm -rf ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
