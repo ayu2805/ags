@@ -9,8 +9,8 @@ For more customization you can install these extension:
  - [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/)*
  - [Caffeine](https://extensions.gnome.org/extension/517/caffeine/)*
  - [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect/)*
- - [GPU profile selector](https://extensions.gnome.org/extension/5009/gpu-profile-selector/)*
+ - [GPU profile selector](https://extensions.gnome.org/extension/5009/gpu-profile-selector/)
 (Folow this [link](https://github.com/bayasdev/envycontrol) to learn about envycontrol.)
  - [Firefox Gnome Theme](https://github.com/rafaelmardojai/firefox-gnome-theme#one-command-install-with-curl)
 
-> '*' signifies that it can be installed by the script.
+> '*' signifies that it will be automatically installed by the script.
