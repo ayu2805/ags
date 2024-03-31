@@ -166,8 +166,8 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 echo ""
 read -r -p "Do you want to install Libadwaita theme for GTK3? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    tag=$(git ls-remote --tags https://github.com/lassekongo83/adw-gtk3.git | awk -F"/" '{print $3}' | sort -V | tail -1)
-    release=${tag//./-}
+    release=$(git ls-remote --tags https://github.com/lassekongo83/adw-gtk3.git | awk -F"/" '{print $3}' | sort -V | tail -1)
+    #release=${tag//./-}
     wget -q -nc --show-progress https://github.com/lassekongo83/adw-gtk3/releases/latest/download/adw-gtk3$release.tar.xz
     sudo tar -xJf adw-gtk3$release.tar.xz -C /usr/share/themes/
     rm adw-gtk3$release.tar.xz
