@@ -2,6 +2,7 @@ accountsservice
 android-tools
 aria2
 ascii
+clang
 cups-pdf
 dbus-python
 dosfstools
@@ -19,6 +20,7 @@ gtk-engine-murrine
 gutenprint
 inetutils
 jdk-openjdk
+llvm
 libreoffice-fresh
 libsecret
 lrzip
