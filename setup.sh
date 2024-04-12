@@ -276,18 +276,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     rm AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
     gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
     
-    wget -q -nc --show-progress https://github.com/micheleg/dash-to-dock/releases/latest/download/dash-to-dock@micxgx.gmail.com.zip
-    rm -rf ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/
-    unzip -q dash-to-dock@micxgx.gmail.com.zip -d ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/
-    rm dash-to-dock@micxgx.gmail.com.zip
-    gnome-extensions enable dash-to-dock@micxgx.gmail.com
-    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock show-trash false
-    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock show-icons-emblems false
-    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
-    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dance-urgent-applications false
-    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock intellihide-mode \'ALL_WINDOWS\'
-    gsettings --schemadir ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas/ set org.gnome.shell.extensions.dash-to-dock click-action \'minimize\'
-    
     wget -q -nc --show-progress https://github.com/GSConnect/gnome-shell-extension-gsconnect/releases/latest/download/gsconnect@andyholmes.github.io.zip
     rm -rf ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
     unzip -q gsconnect@andyholmes.github.io.zip -d ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
