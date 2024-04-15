@@ -88,6 +88,7 @@ sudo pacman -S --needed --noconfirm - <tpkg
 sudo systemctl enable touchegg
 sudo systemctl enable --now ufw
 sudo systemctl enable --now cups
+sudo systemctl enable power-profiles-daemon
 sudo cp smb.conf /etc/samba/
 hn=$(hostname)
 echo -e "netbios name = $hn\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
@@ -147,12 +148,6 @@ echo "Installing Gnome..."
 echo ""
 sudo pacman -S --needed --noconfirm - < gnome
 pacman -Sgq gnome | grep -vf rpkg | sudo pacman -S --needed --noconfirm -
-if [ "$(pactree -r tlp)" ]; then
-    echo ""
-else
-    sudo pacman -S --needed --noconfirm power-profiles-daemon
-    sudo systemctl enable power-profiles-daemon
-fi
 sudo systemctl enable gdm
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
