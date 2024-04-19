@@ -196,18 +196,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-read -r -p "Do you want to install TLP (and remove Gnome Power Profiles Daemon)? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    echo ""
-    sudo pacman -Rscn --noconfirm power-profiles-daemon
-    sudo pacman -S --needed --noconfirm tlp tlp-rdw smartmontools ethtool gnome-power-manager
-    sudo systemctl enable tlp.service
-    sudo systemctl enable NetworkManager-dispatcher.service
-    sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
-    sudo tlp start
-fi
-
-echo ""
 read -r -p "Do you want to install Firefox? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -S --needed --noconfirm firefox
