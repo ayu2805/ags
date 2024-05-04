@@ -264,13 +264,13 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     rm -rf ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
     unzip -q AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/
     rm AlphabeticalAppGrid@stuarthayhurst.shell-extension.zip
+    glib-compile-schemas ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/schemas/
     gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
     
     wget -q -nc --show-progress https://github.com/GSConnect/gnome-shell-extension-gsconnect/releases/latest/download/gsconnect@andyholmes.github.io.zip
     rm -rf ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
     unzip -q gsconnect@andyholmes.github.io.zip -d ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/
     rm gsconnect@andyholmes.github.io.zip
-    glib-compile-schemas ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/schemas/
     gnome-extensions enable gsconnect@andyholmes.github.io
     
     wget -q -nc --show-progress https://github.com/JoseExposito/gnome-shell-extension-x11gestures/releases/latest/download/x11gestures@joseexposito.github.io.zip
