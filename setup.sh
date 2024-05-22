@@ -88,29 +88,24 @@ sudo pacman -S --needed --noconfirm - <tpkg
 sudo systemctl enable touchegg
 sudo systemctl enable --now ufw
 sudo systemctl enable --now cups
+sudo systemctl enable sshd avahi-daemon
 sudo systemctl enable power-profiles-daemon
 sudo cp smb.conf /etc/samba/
 hn=$(hostname)
-echo -e "netbios name = $hn\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
+echo -e "netbios name = $hn\n\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
 echo ""
 sudo smbpasswd -a $un
 echo ""
 sudo systemctl enable smb nmb
-sudo cp cups /etc/ufw/applications.d/
 sudo cp gsconnect /etc/ufw/applications.d/
-sudo cp samba /etc/ufw/applications.d/
 sudo cupsctl
 sudo ufw enable
-sudo ufw app update CUPS
-sudo ufw allow CUPS
+sudo ufw allow IPP
+sudo ufw allow CIFS
+sudo ufw allow SSH
 sudo ufw app update GSConnect
 sudo ufw allow GSConnect
-sudo ufw app update SMB
-sudo ufw allow SMB
-sudo ufw allow CIFS
-sudo systemctl enable sshd avahi-daemon
 sudo cp /usr/share/doc/avahi/ssh.service /etc/avahi/services/
-sudo ufw allow SSH
 chsh -s /usr/bin/fish
 sudo chsh -s /usr/bin/fish
 pipx ensurepath
@@ -122,7 +117,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     un=$(whoami)
     hn=$(hostname)
     sudo cp smb.conf /etc/samba/
-    echo -e "netbios name = $hn\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
+    echo -e "netbios name = $hn\n\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
     echo -e "[Samba Share]\ncomment = Samba Share\npath = /home/$un/Samba Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
     rm -rf ~/Samba\ Share
     mkdir ~/Samba\ Share
@@ -217,14 +212,14 @@ fi
 echo ""
 read -r -p "Do you want to install HPLIP (Driver for HP printers)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -S --needed --noconfirm hplip sane python-pillow rpcbind python-reportlab
+    sudo pacman -S --needed --noconfirm hplip
     hp-plugin -i
 fi
 
 echo ""
-read -r -p "Do you want to install Code-OSS? [y/N] " response
+read -r -p "Do you want to install VSCode(AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -S --needed --noconfirm code
+    sudo pacman -S --needed --noconfirm visual-studio-code-bin
 fi
 
 echo ""
