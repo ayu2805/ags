@@ -11,8 +11,7 @@ fi
 
 read -p "Enter your Full Name: " fn
 if [ -n "$fn" ]; then
-    un=$(whoami)
-    sudo chfn -f "$fn" "$un"
+    sudo chfn -f "$fn" "$(whoami)"
 else
     echo ""
 fi
@@ -91,10 +90,9 @@ sudo systemctl enable --now cups
 sudo sustemctl disable systemd-resolved.service
 sudo systemctl enable sshd avahi-daemon power-profiles-daemon
 sudo cp smb.conf /etc/samba/
-hn=$(hostname)
-echo -e "netbios name = $hn\n\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
+echo -e "netbios name = $(hostname)\n\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
 echo ""
-sudo smbpasswd -a $un
+sudo smbpasswd -a $(whoami)
 echo ""
 sudo systemctl enable smb nmb
 sudo cp gsconnect /etc/ufw/applications.d/
@@ -114,11 +112,9 @@ pipx ensurepath
 echo ""
 read -r -p "Do you want to create a Samba Shared folder? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    un=$(whoami)
-    hn=$(hostname)
     sudo cp smb.conf /etc/samba/
-    echo -e "netbios name = $hn\n\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
-    echo -e "[Samba Share]\ncomment = Samba Share\npath = /home/$un/Samba Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
+    echo -e "netbios name = $(hostname)\n\n" | sudo tee -a /etc/samba/smb.conf > /dev/null
+    echo -e "[Samba Share]\ncomment = Samba Share\npath = /home/$(whoami)/Samba Share\nwritable = yes\nbrowsable = yes\nguest ok = no" | sudo tee -a /etc/samba/smb.conf > /dev/null
     rm -rf ~/Samba\ Share
     mkdir ~/Samba\ Share
     sudo systemctl restart smb nmb
@@ -186,7 +182,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     git config --global user.email "$git_email"
     ssh-keygen -C "$git_email"
     git config --global gpg.format ssh
-    git config --global user.signingkey /home/$un/.ssh/id_ed25519.pub
+    git config --global user.signingkey /home/$(whoami)/.ssh/id_ed25519.pub
     git config --global commit.gpgsign true
 fi
 
