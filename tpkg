@@ -17,6 +17,7 @@ foomatic-db-nonfree
 git
 gtk-engine-murrine
 gutenprint
+inetutils
 jdk-openjdk
 jfsutils
 libreoffice-fresh
@@ -24,7 +25,6 @@ libsecret
 mtools
 neofetch
 neovim
-net-tools
 nftables
 nilfs-utils
 noto-fonts
