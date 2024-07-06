@@ -78,7 +78,6 @@ fi
 
 echo ""
 sudo pacman -S --needed --noconfirm - <tpkg
-sudo systemctl enable touchegg
 sudo systemctl enable --now ufw
 sudo systemctl enable --now cups
 sudo systemctl disable systemd-resolved.service
@@ -134,7 +133,7 @@ echo "Installing Gnome..."
 echo ""
 sudo pacman -S --needed --noconfirm - <gnome
 pacman -Sgq gnome | grep -vf rpkg | sudo pacman -S --needed --noconfirm -
-sudo systemctl enable gdm wsdd
+sudo systemctl enable gdm wsdd touchegg
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled-on-external-mouse
