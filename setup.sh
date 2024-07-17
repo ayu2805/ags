@@ -41,7 +41,7 @@ if [ "$(pactree -r linux-zen)" ]; then
     sudo pacman -S --needed --noconfirm linux-zen-headers
 fi
 
-if [ "$(pactree -r chaotic-keyring || pactree -r chaotic-mirrorlist)" ]; then
+if [ "$(pactree -r chaotic-keyring && pactree -r chaotic-mirrorlist)" ]; then
     echo -e "[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
 else
     echo ""
