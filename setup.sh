@@ -20,7 +20,6 @@ sudo cp pacman.conf /etc/
 sudo rm -rf /etc/pacman.d/hooks/
 sudo mkdir /etc/pacman.d/hooks/
 sudo cp gutenprint.hook /etc/pacman.d/hooks/
-sudo pacman -Syu
 
 echo ""
 read -r -p "Do you want to install Reflector? [y/N] " response
