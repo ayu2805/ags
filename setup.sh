@@ -247,20 +247,15 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo ""
     yay -S --needed --noconfirm cloudflare-warp-bin
     sudo systemctl enable --now warp-svc
-    echo ""
-    echo "Waiting for few seconds for the services..."
-    echo ""
+    echo "\nWaiting for few seconds for the services...\n"
     sleep 3
     warp-cli registration delete
-    echo ""
-    echo "Registering WARP..."
-    echo ""
+    echo "\nRegistering WARP...\n"
     warp-cli registration new
     read -r -p "Do you want to connect to warp now? [y/N] " response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         warp-cli connect
-        echo ""
-        echo "Waiting for 5 seconds..."
+        echo "\nWaiting for 5 seconds..."
         sleep 5
     fi
     warp-cli generate-completions fish | sudo tee /etc/fish/completions/warp-cli.fish > /dev/null
