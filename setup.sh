@@ -50,10 +50,10 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo -e "[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
     sudo pacman -Syu
 
-    if [ "$(pactree -r yay-bin)" ] ; then
+    if [ "$(pactree -r yay)" ]; then
         echo ""
         echo "Yay is already installed"
-    elif [ "$(pactree -r yay)" ] ; then
+    elif [ "$(pactree -r yay-bin)" ]; then
         echo ""
         echo "Yay is already installed"
     else
@@ -61,10 +61,10 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     fi
 fi
 
-if [ "$(pactree -r yay-bin)" ] ; then
+if [ "$(pactree -r yay)" ]; then
     echo ""
     echo "Yay is already installed"
-elif [ "$(pactree -r yay)" ] ; then
+elif [ "$(pactree -r yay-bin)" ]; then
     echo ""
     echo "Yay is already installed"
 else
