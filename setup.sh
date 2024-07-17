@@ -49,6 +49,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
     sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
     echo -e "[Chaotic-AUR]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
+    sudo pacman -Syu
 
     if [ "$(pactree -r yay-bin)" || "$(pactree -r yay)"]; then
         echo ""
