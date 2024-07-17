@@ -51,16 +51,12 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu
 
     if [ "$(pactree -r yay || pactree -r yay-bin)" ]; then
-        echo ""
-        echo "Yay is already installed"
     else
         sudo pacman -S --needed --noconfirm yay
     fi
 fi
 
 if [ "$(pactree -r yay || pactree -r yay-bin)" ]; then
-    echo ""
-    echo "Yay is already installed"
 else
     sudo pacman -S --needed --noconfirm git base-devel
     git clone https://aur.archlinux.org/yay-bin.git --depth=1
