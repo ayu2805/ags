@@ -83,71 +83,7 @@ fi
 echo ""
 read -r -p "Do you want to install AMD/ATI drivers? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-       if [ "$(pactree -r yay-bin)" ] ; then
-        echo ""
-        echo "Yay is already installed"
-    else if [ "$(pactree -r yay)"] ; then
-        echo ""
-        echo "Yay is already installed"
-    else
-        sudo pacman -S --needed --noconfirm yay
-    fi
-fi
-
-if [ "$(pactree -r yay-bin)" ] ; then
-    echo ""
-    echo "Yay is already installed"
-else if [ "$(pactree -r yay)"] ; then
-    echo ""
-    echo "Yay is already installed"    if [ "$(pactree -r yay-bin)" ] ; then
-        echo ""
-        echo "Yay is already installed"
-    else if [ "$(pactree -r yay)"] ; then
-        echo ""
-        echo "Yay is already installed"
-    else
-        sudo pacman -S --needed --noconfirm yay
-    fi
-fi
-
-if [ "$(pactree -r yay-bin)" ] ; then
-    echo ""
-    echo "Yay is already installed"
-else if [ "$(pactree -r yay)"] ; then
-    echo ""
-    echo "Yay is already installed"    if [ "$(pactree -r yay-bin)" ] ; then
-        echo ""
-        echo "Yay is already installed"
-    else if [ "$(pactree -r yay)"] ; then
-        echo ""
-        echo "Yay is already installed"
-    else
-        sudo pacman -S --needed --noconfirm yay
-    fi
-fi
-
-if [ "$(pactree -r yay-bin)" ] ; then
-    echo ""
-    echo "Yay is already installed"
-else if [ "$(pactree -r yay)"] ; then
-    echo ""
-    echo "Yay is already installed"    if [ "$(pactree -r yay-bin)" ] ; then
-        echo ""
-        echo "Yay is already installed"
-    else if [ "$(pactree -r yay)"] ; then
-        echo ""
-        echo "Yay is already installed"
-    else
-        sudo pacman -S --needed --noconfirm yay
-    fi
-fi
-
-if [ "$(pactree -r yay-bin)" ] ; then
-    echo ""
-    echo "Yay is already installed"
-else if [ "$(pactree -r yay)"] ; then
-    echo ""
-    echo "Yay is already installed" sudo pacman -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver vulkan-radeon #AMD/ATI
+    sudo pacman -S --needed --noconfirm mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver vulkan-radeon #AMD/ATI
 fi
 
 echo ""
