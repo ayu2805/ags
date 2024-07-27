@@ -212,7 +212,7 @@ fi
 echo ""
 read -r -p "Do you want to install Google Chrome? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -S --needed --noconfirm google-chrome
+    yay -S --needed --noconfirm google-chrome
 fi
 
 echo ""
