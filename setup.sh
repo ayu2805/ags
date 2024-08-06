@@ -126,7 +126,7 @@ pacman -Sgq gnome | grep -vf rpkg | sudo pacman -S --needed --noconfirm -
 sudo systemctl enable gdm wsdd touchegg
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
-sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled-on-external-mouse
+#sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled-on-external-mouse
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
@@ -138,7 +138,7 @@ gsettings set org.gnome.desktop.datetime automatic-timezone true
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 gsettings set org.gnome.mutter center-new-windows true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
-gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled-on-external-mouse
+#gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled-on-external-mouse
 gsettings set org.gnome.desktop.peripherals.touchpad speed 0.2
 gsettings set org.gnome.desktop.privacy old-files-age uint32\ 7
 gsettings set org.gnome.desktop.privacy remember-recent-files false
