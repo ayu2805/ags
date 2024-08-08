@@ -69,7 +69,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-sudo pacman -S --needed --noconfirm - <tpkg
+sudo pacman -S --needed --noconfirm - <common
 sudo systemctl enable --now ufw
 sudo systemctl enable --now cups
 sudo systemctl disable systemd-resolved.service
@@ -122,7 +122,7 @@ echo ""
 echo "Installing Gnome..."
 echo ""
 sudo pacman -S --needed --noconfirm - <gnome
-pacman -Sgq gnome | grep -vf rpkg | sudo pacman -S --needed --noconfirm -
+pacman -Sgq gnome | grep -vf remove | sudo pacman -S --needed --noconfirm -
 sudo systemctl enable gdm wsdd touchegg
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
