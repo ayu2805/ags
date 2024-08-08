@@ -126,6 +126,8 @@ pacman -Sgq gnome | grep -vf rpkg | sudo pacman -S --needed --noconfirm -
 sudo systemctl enable gdm wsdd touchegg
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
+sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad speed 0.4
 #sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled-on-external-mouse
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'
