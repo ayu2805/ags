@@ -276,7 +276,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     gnome-extensions enable caffeine@patapon.info
     gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
     gnome-extensions enable light-style@gnome-shell-extensions.gcampax.github.com
-    gnome-extensions enable workspace-indicator@gnome-shell-extensions.gcampax.github.com
 
     echo ""
     mkdir -p ~/.local/share/gnome-shell/extensions/
